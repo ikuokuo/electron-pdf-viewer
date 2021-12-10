@@ -1,6 +1,11 @@
 module.exports = {
   extends: 'erb',
   rules: {
+    'no-console': 'off',
+    // default export or not
+    //  https://github.com/airbnb/javascript/issues/1365
+    'import/prefer-default-export': 'off',
+    'import/no-default-export': 'off',
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',
     // Since React 17 and typescript 4.1 you can safely disable the rule
