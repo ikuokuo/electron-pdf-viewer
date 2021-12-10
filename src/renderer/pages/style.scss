@@ -1,0 +1,15 @@
+@import '~antd/dist/antd.css';
+
+.layout {
+  height: 100vh;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    & > :first-child {
+      flex: auto;
+      padding: 16px;
+    }
+  }
+}
