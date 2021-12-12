@@ -1,0 +1,11 @@
+.pdfjs {
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    flex: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
