@@ -3,6 +3,9 @@
     "source.fixAll.eslint": true
   },
   "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
 
   "files.associations": {
     ".eslintrc": "jsonc",
