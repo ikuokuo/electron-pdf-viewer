@@ -1,8 +1,11 @@
 import React from 'react';
 
 import * as pdfjsLib from 'pdfjs-dist/webpack';
+/* remove `d.ts`
+cat <<EOF > node_modules/pdfjs-dist/web/pdf_viewer.d.ts
+export * from "pdfjs-dist/types/web/pdf_viewer.component";
+EOF */
 import { PDFViewer, EventBus } from 'pdfjs-dist/web/pdf_viewer';
-// import { PDFViewer, EventBus } from 'pdfjs-dist/types/web/pdf_viewer.component';
 import 'pdfjs-dist/web/pdf_viewer.css';
 
 import { CONSTANTS } from '@constants';
