@@ -8,7 +8,7 @@ import { Home } from './Home';
 import { Pdfjs } from './Pdfjs';
 import { PdfViewer } from './PdfViewer';
 import { PdfViewerHTML } from './PdfViewerHTML';
-import './style.scss';
+import './style.less';
 
 export const App: React.FC = () => {
   return (

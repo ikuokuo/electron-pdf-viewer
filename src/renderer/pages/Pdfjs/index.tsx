@@ -3,7 +3,7 @@ import React from 'react';
 import * as pdfjsLib from 'pdfjs-dist/webpack';
 
 import { CONSTANTS } from '@constants';
-import './style.scss';
+import './style.less';
 
 export const Pdfjs: React.FC = () => {
   const url = CONSTANTS.pdfUrl;

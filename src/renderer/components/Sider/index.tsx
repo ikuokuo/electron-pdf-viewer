@@ -11,7 +11,7 @@ export const Sider: React.FC<RouteComponentProps> = ({ location, history }) => {
   };
 
   return (
-    <Layout.Sider width={200} theme="light">
+    <Layout.Sider width={200}>
       <Menu defaultSelectedKeys={['home']} mode="inline" onSelect={menuSelect}>
         <Menu.Item key="home">Home</Menu.Item>
         <Menu.Item key="pdfjs">PDF.js API</Menu.Item>

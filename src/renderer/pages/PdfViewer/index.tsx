@@ -9,7 +9,7 @@ import { PDFViewer, EventBus } from 'pdfjs-dist/web/pdf_viewer';
 import 'pdfjs-dist/web/pdf_viewer.css';
 
 import { CONSTANTS } from '@constants';
-import './style.scss';
+import './style.less';
 
 export const PdfViewer: React.FC = () => {
   const url = CONSTANTS.pdfUrl;

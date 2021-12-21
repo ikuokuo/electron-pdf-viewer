@@ -12,6 +12,7 @@ import { merge } from 'webpack-merge';
 import TerserPlugin from 'terser-webpack-plugin';
 import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
+import webpackStyles from './webpack.styles';
 import checkNodeEnv from '../scripts/check-node-env';
 import deleteSourceMaps from '../scripts/delete-source-maps';
 
@@ -50,7 +51,7 @@ export default merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.s?(a|c)ss$/,
+        test: /\.(css|less)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -61,14 +62,28 @@ export default merge(baseConfig, {
               importLoaders: 1,
             },
           },
-          'sass-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: webpackStyles.lessOptions,
+            },
+          },
         ],
-        include: /\.module\.s?(c|a)ss$/,
+        include: /\.module\.(css|less)$/,
       },
       {
-        test: /\.s?(a|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        exclude: /\.module\.s?(c|a)ss$/,
+        test: /\.(css|less)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: webpackStyles.lessOptions,
+            },
+          },
+        ],
+        exclude: /\.module\.(css|less)$/,
       },
       // Fonts
       {

@@ -7,6 +7,7 @@ import { merge } from 'webpack-merge';
 import { spawn, execSync } from 'child_process';
 import baseConfig from './webpack.config.base';
 import webpackPaths from './webpack.paths';
+import webpackStyles from './webpack.styles';
 import checkNodeEnv from '../scripts/check-node-env';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
@@ -64,7 +65,7 @@ export default merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.s?css$/,
+        test: /\.(css|less)$/,
         use: [
           'style-loader',
           {
@@ -75,14 +76,28 @@ export default merge(baseConfig, {
               importLoaders: 1,
             },
           },
-          'sass-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: webpackStyles.lessOptions,
+            },
+          },
         ],
-        include: /\.module\.s?(c|a)ss$/,
+        include: /\.module\.(css|less)$/,
       },
       {
-        test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        exclude: /\.module\.s?(c|a)ss$/,
+        test: /\.(css|less)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: webpackStyles.lessOptions,
+            },
+          },
+        ],
+        exclude: /\.module\.(css|less)$/,
       },
       // Fonts
       {

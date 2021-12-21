@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { CONSTANTS } from '@constants';
-import './style.scss';
+import './style.less';
 
 export const PdfViewerHTML: React.FC = () => {
   const { pdfUrl, pdfWebViewerUrl } = CONSTANTS;
