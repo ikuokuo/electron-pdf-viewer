@@ -12,10 +12,10 @@ import './style.less';
 
 export const App: React.FC = () => {
   return (
-    <Layout className="layout">
+    <Layout className="app">
       <Router>
         <Sider />
-        <Layout.Content className="content">
+        <Layout.Content className="app__content">
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/home" component={Home} />

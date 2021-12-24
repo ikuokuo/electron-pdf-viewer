@@ -54,8 +54,8 @@ export const Pdfjs: React.FC = () => {
     <div className="pdfjs">
       <div>url={url}</div>
       <div>numPages={numPages}</div>
-      <div className="container">
-        <canvas ref={canvasRef} className="pdfViewer" />
+      <div className="pdfjs__container">
+        <canvas ref={canvasRef} />
       </div>
     </div>
   );

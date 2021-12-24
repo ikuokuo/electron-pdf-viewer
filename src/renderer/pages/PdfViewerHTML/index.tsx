@@ -10,11 +10,11 @@ export const PdfViewerHTML: React.FC = () => {
     console.log('PdfViewerHTML mounted');
   });
   return (
-    <div className="viewerHTML">
+    <div className="iframe-viewer">
       <div>pdfUrl={pdfUrl}</div>
       <div>pdfWebViewerUrl={pdfWebViewerUrl}</div>
       <iframe
-        className="pdfViewer"
+        className="iframe-viewer__container"
         title="PdfViewerHTML"
         src={`${pdfWebViewerUrl}?file=${pdfUrl}`}
       />

@@ -55,12 +55,12 @@ export const PdfViewer: React.FC = () => {
   }, [url]);
 
   return (
-    <div className="viewer">
+    <div className="pdf-viewer">
       <div>url={url}</div>
       <div>numPages={numPages}</div>
       <div ref={hrRef} />
-      <div ref={containerRef} className="container">
-        <div className="pdfViewer" />
+      <div ref={containerRef} className="pdf-viewer__container">
+        <div className="pdfViewer pdfjs-viewer" />
       </div>
     </div>
   );
