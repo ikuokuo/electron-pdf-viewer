@@ -1,8 +1,7 @@
 import React from 'react';
 
-import * as pdfjsLib from 'pdfjs-dist/webpack';
-
 import { CONSTANTS } from '@constants';
+import { PdfJsApi } from '@renderer/vendors/PdfJsApi';
 import './style.less';
 
 export const Pdfjs: React.FC = () => {
@@ -16,7 +15,7 @@ export const Pdfjs: React.FC = () => {
     console.log('Pdfjs mounted');
 
     (async () => {
-      const loadingTask = pdfjsLib.getDocument(url);
+      const loadingTask = PdfJsApi.getDocument(url);
       const pdf = await loadingTask.promise;
 
       console.log(`PDF loaded, n=${pdf.numPages}`);

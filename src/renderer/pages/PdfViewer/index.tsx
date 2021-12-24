@@ -1,14 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
-import * as pdfjsLib from 'pdfjs-dist/webpack';
-/* remove `d.ts`
-cat <<EOF > node_modules/pdfjs-dist/web/pdf_viewer.d.ts
-export * from "pdfjs-dist/types/web/pdf_viewer.component";
-EOF */
-import { PDFViewer, EventBus } from 'pdfjs-dist/web/pdf_viewer';
-import 'pdfjs-dist/web/pdf_viewer.css';
-
 import { CONSTANTS } from '@constants';
+import { PdfJsApi } from '@renderer/vendors/PdfJsApi';
+import { PdfJsViewer } from '@renderer/vendors/PdfJsViewer';
 import './style.less';
 
 export const PdfViewer: React.FC = () => {
@@ -29,20 +24,9 @@ export const PdfViewer: React.FC = () => {
       container.style.top = `${hrRef.current.offsetTop}px`;
     }
 
-    const eventBus = new EventBus(null);
-    eventBus.on('pagesinit', () => {
-      console.log('pagesinit');
-    });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    eventBus.on('pagesloaded', (e: any) => {
-      console.log('pagesloaded');
-      console.log(e);
-      setNumPages(e.pagesCount);
-    });
-    eventBus.on('pagerendered', () => {
-      console.log('pagerendered');
-    });
-    const pdfViewer = new PDFViewer({
+    const eventBus = new PdfJsViewer.EventBus(null);
+
+    const pdfViewer = new PdfJsViewer.PDFViewer({
       container,
       eventBus,
       linkService: null,
@@ -50,8 +34,21 @@ export const PdfViewer: React.FC = () => {
       l10n: null,
     });
 
+    eventBus.on('pagesinit', () => {
+      console.log('pagesinit');
+    });
+    eventBus.on('pagesloaded', (e: any) => {
+      console.log('pagesloaded');
+      console.log(e);
+      setNumPages(e.pagesCount);
+    });
+    eventBus.on('pagechanging', (e: any) => {
+      console.log('pagechanging');
+      console.log(e);
+    });
+
     (async () => {
-      const loadingTask = pdfjsLib.getDocument(url);
+      const loadingTask = PdfJsApi.getDocument(url);
       const pdf = await loadingTask.promise;
       pdfViewer.setDocument(pdf);
     })();

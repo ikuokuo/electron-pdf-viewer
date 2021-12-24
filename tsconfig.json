@@ -22,6 +22,11 @@
     "outDir": "release/app/dist",
     "paths": {
       "@constants": ["constants"],
+      "@constants/*": ["constants/*"],
+      "@main": ["main"],
+      "@main/*": ["main/*"],
+      "@renderer": ["renderer"],
+      "@renderer/*": ["renderer/*"],
     },
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]
